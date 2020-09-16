@@ -22,7 +22,7 @@ type Article struct {
 var Articles []Article
 
 func homePage(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Welcome to the HomePage with the Dockerfile!")
+    fmt.Fprintf(w, "Welcome to the HomePage with the Dockerile!")
     fmt.Println("Endpoint Hit: homePage")
 }
 
