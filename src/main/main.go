@@ -2,9 +2,7 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 
@@ -12,14 +10,15 @@ import (
 )
 
 // Article - Our struct for all articles
+/*
 type Article struct {
 	Id      string `json:"Id"`
 	Title   string `json:"Title"`
 	Desc    string `json:"desc"`
 	Content string `json:"content"`
-}
+}*/
 
-var Articles []Article
+//var Articles []Article
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Welcome to the HomePage with the Dockerile!")
@@ -32,15 +31,16 @@ func simpleSearch(w http.ResponseWriter, r *http.Request) {
 	//  json.NewEncoder(w).Encode(Articles)
 }
 
-/*func returnSingleArticle(w http.ResponseWriter, r *http.Request) {
-    vars := mux.Vars(r)
-    key := vars["id"]
+/*
+func returnSingleArticle(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	key := vars["id"]
 
-    for _, article := range Articles {
-        if article.Id == key {
-            json.NewEncoder(w).Encode(article)
-        }
-    }
+	for _, article := range Articles {
+		if article.Id == key {
+			json.NewEncoder(w).Encode(article)
+		}
+	}
 }*/
 func cabinGrades(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<?xml version=\"1.0\"?><response method=\"getcabingrades\" success=\"N\"><errors><error code=\"420\" text=\"Error getting rate codes. HASH(0x7f245d604460)\" /></errors><request><auth password=\"Hotelbeds\" username=\"Hotelbedscruises\" /><method action=\"getcabingrades\" language=\"en\" ratecode=\"\" resultno=\"302_0.0\" sessionkey=\"107E5256_72F8u4347-803A-5CFD384926B3\" /></request></response>")
@@ -49,6 +49,7 @@ func rateCodes(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<?xml version=\"1.0\"?><response method=\"getratecodes\" sessionkey=\"107E5256_72F8u4347-803A-5CFD384926B3\" success=\"Y\"><errors></errors><request><auth password=\"Hotelbeds\" username=\"Hotelbedscruises\" /><method action=\"getratecodes\" language=\"en\" resultno=\"302_0.0\" sessionkey=\"107E5256_72F8u4347-803A-5CFD384926B3\" /></request><results><farecodes Code=\"5244\" ConditionCode=\"0067/00000000/RSO51SAV\" Text=\"Invalid Sail Date\" /></results></response>")
 }
 
+/*
 func createNewArticle(w http.ResponseWriter, r *http.Request) {
 	// get the body of our POST request
 	// unmarshal this into a new Article struct
@@ -74,7 +75,7 @@ func deleteArticle(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-
+*/
 func handleRequests() {
 	myRouter := mux.NewRouter().StrictSlash(true)
 	myRouter.HandleFunc("/", homePage)
