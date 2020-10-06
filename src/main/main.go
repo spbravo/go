@@ -81,15 +81,16 @@ func handleRequests() {
 	myRouter.HandleFunc("/", homePage)
 	myRouter.HandleFunc("/simpleSearch", simpleSearch).Methods("POST")
 	myRouter.HandleFunc("/cabinGrades", cabinGrades)
-	myRouter.HandleFunc("/article/{id}", deleteArticle).Methods("DELETE")
+	//myRouter.HandleFunc("/article/{id}", deleteArticle).Methods("DELETE")
 	myRouter.HandleFunc("/rateCodes", rateCodes)
 	log.Fatal(http.ListenAndServe(":10000", myRouter))
 }
 
 func main() {
-	Articles = []Article{
-		Article{Id: "1", Title: "Hello", Desc: "Article Description", Content: "Article Content"},
-		Article{Id: "2", Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
-	}
+	/*
+		    Articles = []Article{
+				Article{Id: "1", Title: "Hello", Desc: "Article Description", Content: "Article Content"},
+				Article{Id: "2", Title: "Hello 2", Desc: "Article Description", Content: "Article Content"},
+			}*/
 	handleRequests()
 }
